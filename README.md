@@ -21,3 +21,7 @@
 1. Пункт 1
 2. Пункт 2
 3. Пункт 3
+
+====
+
+![screenshot of sample](http://webdesign.ru.net/images/Heydon_min.jpg)
