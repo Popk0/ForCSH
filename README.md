@@ -1,9 +1,7 @@
-    dir /fonts
-====
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
-====
 
 ![screenshot of sample](http://webdesign.ru.net/images/Heydon_min.jpg)
 
@@ -29,9 +27,24 @@ Service оснащен классом Logger, как и предыдущая м�
 
 Происходит десериализация - процесс чтения `XML-документа` и создания объекта, строго типизированного для `XML-схемы (XSD)` документа.
 Перед десериализацией **XmlSerializer** должен быть сконструирован с использованием типа объекта, который десериализуется, в нашем случае это **Options**
+```cs
+public Options XMLDeserialize()
+{
+    try
+    {
+        XmlSerializer xml = new XmlSerializer(typeof(Options));
 
-![screenshot of sample](http://webdesign.ru.net/images/Heydon_min.jpg)
-
+        using (FileStream fs = new FileStream(xmlPath, FileMode.OpenOrCreate))
+        {
+            return (Options)xml.Deserialize(fs);
+        }                
+    }
+    catch
+    {
+        throw new Exception(@"Error in xml deserialize");
+    }
+}
+```
 Одна ошибка и ты ошибся
 -----
 
