@@ -49,16 +49,35 @@ public Options XMLDeserialize()
 -----
 
 > Наш **ConfigurationManager** помогает нам определить, с чем мы будем иметь дело, посредством проверки расширения конфигурации.
-
-![screenshot of sample](http://webdesign.ru.net/images/Heydon_min.jpg)
-
+```cs
+class ConfigurationManager
+{
+    readonly IParser parser;
+    public ConfigurationManager(string path, string config)
+    {
+        if (Path.GetExtension(path) == ".xml")
+        {
+            parser = new XMLParser(path, config);
+        }            
+        parser = new JSParser(path);                        
+    }
+    public Options GetParseOptions() => parser.GetParseOptions();
+}
+```
 F
 -----
 
 Парсеры **XMLParser** и **JSParser** наследуются от интерфейса `IParser`, реализующем метод `GetParseOptions`, с возвращением уже заполненного объекта **Options**
 >Причем философия парсеров немного отличается, в отличие от JSParser'а, XMLParser проходит проверку по схеме с помощью **XPathNavigator**. Метод `Validate` класса **XmlDocument** проверяет `XML-документ`, содержащийся в объекте **XmlDocument**, по схеме, указанной в свойстве **XmlDocument** объекта `Schemas`, и выполняет приращение >информационного набора. Результатом является замена в объекте **XmlDocument** ранее нетипизированного `XML-документа` типизированным документом.
-
-![screenshot of sample](http://webdesign.ru.net/images/Heydon_min.jpg)
-
+```cs
+...
+XmlDocument xmlDoc = new XmlDocument();
+xmlDoc.Load(xmlPath);
+XPathNavigator navigator = xmlDoc.CreateNavigator();
+xmlDoc.Schemas.Add("", xsdPath);
+ValidationEventHandler validation = new ValidationEventHandler(SchemaValidationHandler);
+...
+xmlDoc.Validate(validation);
+```
 И как только виднеется свет в конце туннеля, класс **Operations** и его процедуры уже на готове сделать все трюки с уже известными параметрами)
 
