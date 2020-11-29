@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Options>
+<SourcePath>D:\Visual Studio\TotalC#\AService\sydema</SourcePath>
+<TargetPath>D:\Visual Studio\TotalC#\AService\tydema</TargetPath>
+<TemplogPath>D:\Visual Studio\TotalC#\AService\templog.txt</TemplogPath>
+<IsForEncrypt>false</IsForEncrypt>
+<IsForArchive>true</IsForArchive>
+</Options>
