@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Options>
+<SourcePath>D:\Visual Studio\Pattern\SPath</SourcePath>
+<TargetPath>D:\Visual Studio\Pattern\TPath</TargetPath>
+<Command>[dbo].[GetEmployeeByRegion]</Command>
+</Options>
